@@ -1,0 +1,48 @@
+.chefs-page {
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.chefs-title {
+font-size: 2rem;
+color: #333;
+margin-bottom: 2rem;
+text-align: center;
+}
+
+.chefs-list {
+list-style: none;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 2rem;
+}
+
+.chef-item {
+background-color: #f9f9f9;
+padding: 1.5rem;
+border-radius: 10px;
+border: 2px solid #ddd;
+transition: transform 0.2s;
+}
+
+.chef-item:hover {
+transform: translateY(-3px);
+box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chef-name {
+font-size: 1.2rem;
+font-weight: 600;
+color: #333;
+}
+
+.chef-link {
+color: #c75a1e;
+text-decoration: none;
+font-weight: 600;
+margin-left: 0.5rem;
+}
+
+.chef-link:hover {
+text-decoration: underline;
+}

@@ -1,0 +1,267 @@
+
+        :root {
+          --primary-color: #c75a1e;
+          --primary-variant: #d2691e;
+          --primary-hover: #a04817;
+          --text-primary: #c75a1e;
+          --text-secondary: #555;
+          --bg-light: #fafafa;
+          --bg-white: #ffffff;
+          --bg-gradient: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+          --border-light: #e0e0e0;
+          --border-accent: dashed 1px #f0f0f0;
+          --disabled-bg: #ddd;
+          --border-radius: 12px;
+          --border-radius-large: 20px;
+          --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+          --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+          --shadow-hover: 0 6px 20px rgba(199, 90, 30, 0.15);
+          --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Main Container */
+        .recipe-steps {
+          max-width: 900px;
+          margin: 2rem auto;
+          padding: 2.5rem;
+          background: var(--bg-gradient);
+          border-radius: var(--border-radius-large);
+          box-shadow: var(--shadow-medium);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .recipe-steps::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(90deg, var(--primary-color), var(--primary-variant));
+        }
+
+
+
+        .steps-progress-bar {
+          height: 100%;
+          background: linear-gradient(90deg, var(--primary-color), var(--primary-variant));
+          width: 20%; /* Static for demo (Step 1/5); Dynamic in React: style={{ width: `${(step / total) * 100}%` }} */
+          transition: width 0.3s ease;
+        }
+
+        /* Title (Adapted for h4) */
+        .steps-title {
+          font-size: 1.6rem;
+          color: var(--text-primary);
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          text-align: center;
+        }
+
+        /* Counter (Adapted for p) */
+        .steps-counter {
+          font-size: 1.1rem;
+          color: var(--text-primary);
+          font-weight: 500;
+          margin-bottom: 2rem;
+          text-align: center;
+          opacity: 0.9;
+        }
+
+        /* Buttons Container */
+        .steps-buttons {
+          display: flex;
+          gap: 1rem;
+          margin-top: 2.5rem; /* Adjusted: Buttons are after back-link in JSX, so margin-top instead of bottom */
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        /* Individual Buttons */
+        .steps-btn {
+          padding: 0.875rem 2.5rem;
+          background: linear-gradient(135deg, var(--primary-color), var(--primary-variant));
+          color: var(--bg-white);
+          border: none;
+          border-radius: var(--border-radius);
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: var(--transition);
+          outline: none;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .steps-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transition: left 0.5s;
+        }
+
+        .steps-btn:hover:not(:disabled)::before {
+          left: 100%;
+        }
+
+        .steps-btn:hover:not(:disabled) {
+          background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: var(--shadow-hover);
+        }
+
+        .steps-btn:focus-visible {
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(199, 90, 30, 0.3);
+        }
+
+        .steps-btn:disabled {
+          background: var(--disabled-bg);
+          cursor: not-allowed;
+          opacity: 0.7;
+          transform: none;
+          box-shadow: none;
+        }
+
+        .steps-btn:disabled::before {
+          display: none;
+        }
+
+        /* Content Area */
+        .steps-content {
+          background-color: var(--bg-white);
+          padding: 2.5rem;
+          border-radius: var(--border-radius);
+          margin-bottom: 2rem;
+          border: var(--border-accent);
+          box-shadow: var(--shadow-light);
+          animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .steps-content p {
+          color: var(--text-secondary);
+          line-height: 1.7;
+          font-size: 1.15rem;
+          margin: 0 0 1.25rem 0;
+          text-align: justify;
+        }
+
+        /* Back Link (Adapted for <Link> which renders as <a>) */
+        .back-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--text-primary);
+          text-decoration: none;
+          font-weight: 600;
+          margin: 1rem 0 0 0; /* Adjusted for positioning after content */
+          transition: var(--transition);
+          padding: 0.5rem 1rem;
+          border-radius: var(--border-radius);
+        }
+
+        .back-link::before {
+          content: '←';
+          font-size: 1.2rem;
+          transition: var(--transition);
+        }
+
+        .back-link:hover,
+        .back-link:focus-visible {
+          color: var(--primary-hover);
+          text-decoration: none;
+          background: rgba(199, 90, 30, 0.05);
+          transform: translateX(-2px);
+        }
+
+        .back-link:focus-visible {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(199, 90, 30, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .recipe-steps {
+            margin: 1rem;
+            padding: 2rem;
+          }
+
+          .steps-title {
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+          }
+
+          .steps-counter {
+            font-size: 1rem;
+          }
+
+          .steps-buttons {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .steps-btn {
+            padding: 1.125rem;
+            text-align: center;
+            font-size: 1.1rem;
+          }
+
+          .steps-content {
+            padding: 2rem;
+          }
+
+          .steps-content p {
+            font-size: 1.05rem;
+            text-align: left;
+          }
+
+          .back-link {
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .recipe-steps {
+            padding: 1.5rem;
+          }
+
+          .steps-content {
+            padding: 1.5rem;
+          }
+
+          .steps-title {
+            font-size: 1.3rem;
+          }
+        }
+
+        /* Base Styles for Demo */
+        body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          color: #333;
+          line-height: 1.6;
+        }
+
+        h1 {
+          text-align: center;
+          margin: 2rem 0;
+          color: #333;
+          font-weight: 600;
+        }
