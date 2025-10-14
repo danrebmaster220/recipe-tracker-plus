@@ -1,16 +1,67 @@
-# React + Vite
+# 🍽️ Recipe Tracker Plus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Recipe Tracker Plus** is an advanced recipe management web app built with **React + Vite**.  
+It allows users to browse, add, edit, and view recipes — featuring **dynamic routing, props, query parameters, and programmatic navigation** for a modern React experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Built With
+- ⚛️ **React + Vite** — fast development setup
+- 🧭 **React Router v6** — routing, nested routes, and dynamic params
+- 🧩 **Props & State Management** — passing data between routes
+- 🎨 **Tailwind CSS** — modern and responsive UI
+- 🔍 **Query Params** — for search, filter, and sort features
+- 🧭 **useNavigate Hook** — for programmatic navigation
+- 🧹 **ESLint** — clean and consistent code
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🍴 Key Features
+- 🏠 Home page displaying all recipes  
+- 📄 Detailed recipe pages using **dynamic params (:id)**  
+- ➕ Add new recipes (with props)  
+- ✏️ Edit and delete existing recipes  
+- 🔍 Search and filter recipes via **query parameters** (e.g. `?search=chicken`)  
+- 📂 Nested routes for recipe sections (e.g. `/recipes/categories/desserts`)  
+- ❌ 404 Not Found page for invalid routes  
+- 📱 Fully responsive layout (desktop + mobile)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/danrebmaster220/recipe-tracker-plus.git
+   cd recipe-tracker-plus
+
+
+🗺️ Route Map
+Route	Description	Notes
+/	Home page listing all recipes. Uses props for displaying recipe data
+/recipes	Parent route for all recipes. Contains a nested <Outlet />
+/recipes/:id	Dynamic route showing a specific recipe. Uses useParams() to get recipe ID
+/recipes/categories	Nested route showing recipe categories. Example: /recipes/categories/desserts
+/add	Add a new recipe. Uses props to pass data back to main list
+/search?query=chicken	Shows filtered recipes based on query. Demonstrates query params
+/404 or *	Catch-all route for 404 Not Found. Displays a user-friendly error page
+
+
+📁 Folder Structure
+src/
+├── assets/            # Images, icons, etc.
+├── components/        # Reusable UI components
+│   ├── RecipeCard.jsx
+│   ├── SearchBar.jsx
+│   └── Layout.jsx     # Shared layout with <Outlet />
+├── pages/             # Page-level components
+│   ├── Home.jsx
+│   ├── AddRecipe.jsx
+│   ├── RecipeDetails.jsx
+│   ├── Categories.jsx
+│   └── NotFound.jsx
+├── App.jsx            # Defines routes
+├── main.jsx           # React entry point
+└── index.css          # Global styles
+
+
